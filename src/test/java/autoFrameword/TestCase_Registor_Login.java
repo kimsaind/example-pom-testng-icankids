@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import appModule.Login_Action;
 
 // Chứa testcase
-public class TestCase_Register {
+public class TestCase_Registor_Login {
 
 	String phone = "0899000001";
 	String otp = "0000";
@@ -112,8 +112,10 @@ public class TestCase_Register {
 				driver.findElement(By.xpath("//small[contains(text(),'Thông tin chứng thực không hợp lệ')]")).getText(),
 				"Thông tin chứng thực không hợp lệ");
 	}
+	
+	
 	@Test
-	public void TC_08_Register_Success() {
+	public void TC_00_Registor_Success() {
 		
 		Login_Action.inputPhone(driver, phone);
 		Login_Action.btnSubmit(driver);
