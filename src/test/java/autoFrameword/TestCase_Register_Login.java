@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import appModule.Login_Action;
 
 // Chứa testcase
-public class TestCase_Registor_Login {
+public class TestCase_Register_Login {
 
 	String phone = "0899000001";
 	String otp = "0000";
@@ -115,7 +115,7 @@ public class TestCase_Registor_Login {
 	
 	
 	@Test
-	public void TC_00_Registor_Success() {
+	public void TC_00_Register_Success() {
 		
 		Login_Action.inputPhone(driver, phone);
 		Login_Action.btnSubmit(driver);
