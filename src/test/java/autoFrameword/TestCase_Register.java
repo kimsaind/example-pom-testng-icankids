@@ -112,17 +112,17 @@ public class TestCase_Register {
 				driver.findElement(By.xpath("//small[contains(text(),'Thông tin chứng thực không hợp lệ')]")).getText(),
 				"Thông tin chứng thực không hợp lệ");
 	}
-	
-	
+
 	@Test
 	public void TC_00_Register_Success() {
-		
+
 		Login_Action.inputPhone(driver, phone);
 		Login_Action.btnSubmit(driver);
 		Login_Action.inputOtp(driver, otp);
 		Login_Action.btnSubmit(driver);
 		Assert.assertEquals(driver.getTitle(), "https://id.dev.icankids.com.vn/ho-so/tai-khoan/");
 	}
+
 	public void sleepInSecond(long timeoutInSecound) {
 		try {
 			Thread.sleep(timeoutInSecound * 1000);

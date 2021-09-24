@@ -27,80 +27,85 @@ public class TestCase_Login {
 	public void setUp() {
 
 		// Firefox
-		//System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-		//driver = new FirefoxDriver();
+		// System.setProperty("webdriver.gecko.driver", projectPath +
+		// "/browserDrivers/geckodriver");
+		// driver = new FirefoxDriver();
 
 		// Chrome
-		System.setProperty("webdriver.chrome.driver", projectPath +
-		"/browserDrivers/chromedriver");
-		 driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
+		driver = new ChromeDriver();
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.get("https://id.dev.icankids.com.vn/auth");
 	}
-	
 
-	//@Test (description = "Login sucess")
+	// @Test (description = "Login sucess")
 	public void TC01_success_Login() throws InterruptedException {
 		Login_Action.inputPhone(driver, phone);
 		Login_Action.btnSubmit(driver);
 		sleepInSecond(1);
-		
+
 		Login_Action.inputOtp(driver, otp);
 		Login_Action.btnSubmit(driver);
 		sleepInSecond(1);
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='container']//h1[contains(text(),'Tài Khoản')]")).getText(),"Tài Khoản");
-		
+		Assert.assertEquals(
+				driver.findElement(By.xpath("//div[@class='container']//h1[contains(text(),'Tài Khoản')]")).getText(),
+				"Tài Khoản");
+
 	}
 
-	//@Test (description = "Click button Buy")
+	// @Test (description = "Click button Buy")
 	public void TC02_invalid_Button_Buy() {
-		
+
 		Login_Action.inputPhone(driver, phone);
 		Login_Action.btnSubmit(driver);
 		sleepInSecond(1);
-		
+
 		Login_Action.inputOtp(driver, otp);
 		Login_Action.btnSubmit(driver);
 		sleepInSecond(1);
-		
+
 		Home_Action.btnBuy(driver);
 		sleepInSecond(1);
-		
+
 		Assert.assertTrue(driver.findElement(By.xpath("//div[@id='header-page']")).isDisplayed());
 	}
 
-	//@Test (description = "Click button InfoAccount")
+	// @Test (description = "Click button InfoAccount")
 	public void TC03_invalid_Btutton_InfoAccount() {
-		
+
 		Login_Action.inputPhone(driver, phone);
 		Login_Action.btnSubmit(driver);
 		sleepInSecond(1);
-		
+
 		Login_Action.inputOtp(driver, otp);
 		Login_Action.btnSubmit(driver);
 		sleepInSecond(1);
-		
+
 		Home_Action.btnInfoAccount(driver);
 		sleepInSecond(1);
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Bạn đã mua Gói 1 năm - Con Cưng ']")).getText(), "Bạn đã mua Gói 1 năm - Con Cưng");
+
+		Assert.assertEquals(driver.findElement(By.xpath("//div[text()='Bạn đã mua Gói 1 năm - Con Cưng ']")).getText(),
+				"Bạn đã mua Gói 1 năm - Con Cưng");
 	}
 
-	@Test (description = "Click button HitoryPayment")
+	@Test(description = "Click button HitoryPayment")
 	public void TC04_invalid_Button_HitoryPayment() {
-		
+
 		Login_Action.inputPhone(driver, phone);
 		Login_Action.btnSubmit(driver);
 		sleepInSecond(1);
-		
+
 		Login_Action.inputOtp(driver, otp);
 		Login_Action.btnSubmit(driver);
 		sleepInSecond(1);
-		
+
 		Home_Action.btnHistoryPayment(driver);
 		sleepInSecond(1);
-		Assert.assertEquals(driver.findElement(By.xpath("//label[@class='footer__row-count__label' and text()='Hàng trên trang:']")).getText(),"Hàng trên trang:");
+		Assert.assertEquals(
+				driver.findElement(By.xpath("//label[@class='footer__row-count__label' and text()='Hàng trên trang:']"))
+						.getText(),
+				"Hàng trên trang:");
 
 	}
 
@@ -112,6 +117,7 @@ public class TestCase_Login {
 		}
 
 	}
+
 	@AfterMethod
 	public void End() {
 		driver.close();
