@@ -4,7 +4,9 @@ package autoFrameword;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -45,15 +47,20 @@ public class TestCase_Register {
 
 	}
 
-	//@Test (description = "Không nhập số điện thoại")
+	@Test (description = "Không nhập số điện thoại")
 	public void TC_01_Do_Not_Phone_Number() {
 		
 		// Click button Tiếp tục
-	
-		action.click(Login_Page.btn_Submit(driver)).perform();
+		Login_Action.inputPhone(driver, "");
+		Login_Action.btnSubmit(driver);
+		String nameMessage = getHtml5ValidationMessage(Login_Page.txtbx_Phone(driver));
+		Assert.assertEquals("Please fill out this field.", nameMessage);
+		}
+		
+		
 		
 		//Assert.assertEquals(driver.getCurrentUrl(), "https://id.dev.icankids.com.vn/auth");
-	}
+	
 	//@Test (description = "Đúng định dạng số điện thoại")
 	public void TC_02_Phone_Number_Is_Correct() {
 		
@@ -202,6 +209,12 @@ public class TestCase_Register {
 		}
 
 	}
+	
+	public String getHtml5ValidationMessage(WebElement element) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", element);
+		}
+
 
 	@AfterMethod
 	public void End() {
