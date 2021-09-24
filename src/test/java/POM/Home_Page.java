@@ -45,6 +45,10 @@ public class Home_Page {
 		element = driver.findElement(By.xpath("//a[contains(text(),'Lịch Sử Giao Dịch')]"));
 		return element;
 	}
+	public static WebElement txt_Search_HistoryPayment(WebDriver driver) {
+		element = driver.findElement(By.xpath("//input[@placeholder='Search Table']"));
+		return element;
+	}
 
 	public static WebElement btn_Profile(WebDriver driver) {
 		element = driver.findElement(By.linkText("Quản lý hồ sơ"));

@@ -39,8 +39,12 @@ public class Home_Action {
 	}
 
 	public static void btnHistoryPayment(WebDriver driver) {
-
+		
 		Home_Page.btn_HistoryPayment(driver).click();
+	}
+	public static void txtSearchHistoryPayment(WebDriver driver, String search) {
+
+		Home_Page.txt_Search_HistoryPayment(driver).sendKeys(search);
 	}
 
 	public static void btnProfile(WebDriver driver) {

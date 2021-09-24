@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import appModule.Login_Action;
 
 // Chứa testcase
-public class TestCase_Register_Login {
+public class TestCase_Register {
 
 	String phone = "0899000001";
 	String otp = "0000";
@@ -123,7 +123,14 @@ public class TestCase_Register_Login {
 		Login_Action.btnSubmit(driver);
 		Assert.assertEquals(driver.getTitle(), "https://id.dev.icankids.com.vn/ho-so/tai-khoan/");
 	}
-		
+	public void sleepInSecond(long timeoutInSecound) {
+		try {
+			Thread.sleep(timeoutInSecound * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	@AfterMethod
 	public void End() {
